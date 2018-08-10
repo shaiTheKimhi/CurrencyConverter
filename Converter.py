@@ -3,7 +3,7 @@ import html
 
 
 def get_currency(raw):
-    return html.get_value_by_tagId(raw, "span", "knowledge-currency__tgt-amount")
+    return html.get_value_by_tagId(raw, "span", "uccResultAmount")
 
 
 if(sys.version.index("3") == 0):
@@ -35,7 +35,7 @@ else:
         elif (i == 4):
             target = sys.argv[3]
     
-    f = requests.get("http://www.xe.com/search?Amount=" + money + "&From=" + source + "&To=" + target,verifiyed=False)
+    f = requests.get("http://www.google.com/search?q=" + money + " " + source + " " + target,verify=False)
     currency = get_currency(f.Text)
     print(currency)
     
