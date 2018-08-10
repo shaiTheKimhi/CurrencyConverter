@@ -23,7 +23,7 @@ if(sys.version.index("3") == 0):
     currency = get_currency(f.read(400))
     print(currency)
 else:
-    import urllib2
+    import requests
     money = "0"
     source = "USD"
     target = "ILS"
@@ -35,7 +35,7 @@ else:
         elif (i == 4):
             target = sys.argv[3]
     
-    f = urllib2.urlopen("http://www.google.com/search?q=" + money + "" + source + "" + target)
-    currency = get_currency(f.read(400))
+    f = requests.get("http://www.xe.com/search?Amount=" + money + "&From=" + source + "&To=" + target,verifiyed=False)
+    currency = get_currency(f.Text)
     print(currency)
     
